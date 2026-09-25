@@ -103,7 +103,9 @@
         }
 
         body.modo-oscuro .valor-card,
-        body.modo-oscuro .servicio-item {
+        body.modo-oscuro .servicio-item,
+        body.modo-oscuro .especialidad-bloque,
+        body.modo-oscuro .especialidad-servicio {
             background: #1b2631;
         }
 
@@ -184,7 +186,7 @@
             font-size: 1rem;
         }
 
-        /* ========== RESTO DEL CSS (MANTENIDO) ========== */
+        /* ========== RESTO DEL CSS ========== */
         html {
             scroll-behavior: smooth;
         }
@@ -554,43 +556,24 @@
             margin: 0 auto;
         }
 
+        /* ========== QUIENES SOMOS (SIN IMAGEN) ========== */
         .quienes-somos {
             padding: 100px 0;
             background: var(--color-light);
         }
 
         .quienes-somos .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            display: block;
         }
 
-        .quienes-somos-image .qs-img-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 24px;
-            background: linear-gradient(145deg, #dce3ea, #c8d1db);
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quienes-somos-image .qs-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 24px;
-        }
-
-        .quienes-somos-image .qs-img-wrapper:hover {
-            transform: scale(1.01);
-            box-shadow: var(--shadow-hover);
+        .quienes-somos-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .quienes-somos-content p {
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.5rem;
             font-size: 1.05rem;
         }
         .quienes-somos-content .firma {
@@ -598,6 +581,7 @@
             font-size: 1.6rem;
             color: var(--color-primary);
             margin-top: 1rem;
+            text-align: center;
         }
 
         .galeria {
@@ -655,45 +639,147 @@
             font-weight: 400;
         }
 
+        /* ========== SERVICIOS / ESPECIALIDADES DIVIDIDAS ========== */
         .servicios {
             padding: 100px 0;
             background: var(--color-light);
         }
 
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 48px;
+        .especialidad-bloque {
+            margin-top: 60px;
+            padding: 50px 40px;
+            background: var(--color-white);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            border-top: 6px solid var(--color-gold);
+            transition: var(--transition);
         }
 
-        .servicio-item {
+        .especialidad-bloque:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .especialidad-bloque.critica {
+            border-top-color: var(--color-accent);
+        }
+
+        .especialidad-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .especialidad-header .especialidad-icono {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .especialidad-header h3 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .especialidad-header .medico-responsable {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-light);
+            padding: 10px 24px;
+            border-radius: 50px;
+            margin-top: 12px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-primary);
+            border: 2px solid var(--color-gold);
+        }
+
+        .especialidad-bloque.critica .especialidad-header .medico-responsable {
+            border-color: var(--color-accent);
+        }
+
+        .especialidad-header .medico-responsable i {
+            color: var(--color-accent);
+        }
+
+        .especialidad-header p {
+            margin: 0 auto;
+            max-width: 700px;
+            font-size: 1.05rem;
+        }
+
+        .especialidad-imagen {
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto 40px;
+            aspect-ratio: 4 / 3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 4px solid var(--color-gold);
+        }
+
+        .especialidad-bloque.critica .especialidad-imagen {
+            border-color: var(--color-accent);
+        }
+
+        .especialidad-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .especialidad-imagen:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .especialidad-servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .especialidad-servicio {
             display: flex;
-            gap: 20px;
-            padding: 30px;
-            background: var(--color-white);
+            gap: 18px;
+            padding: 26px;
+            background: var(--color-light);
             border-radius: 14px;
             transition: var(--transition);
             border-left: 4px solid var(--color-gold);
+        }
+
+        .especialidad-bloque.critica .especialidad-servicio {
+            border-left-color: var(--color-accent);
+        }
+
+        .especialidad-servicio:hover {
+            transform: translateX(6px);
             box-shadow: var(--shadow-soft);
         }
-        .servicio-item:hover {
-            transform: translateX(6px);
-            box-shadow: var(--shadow-hover);
-        }
-        .servicio-item .icon {
+
+        .especialidad-servicio .icon {
             font-size: 2rem;
             color: var(--color-accent);
             flex-shrink: 0;
             margin-top: 4px;
         }
-        .servicio-item h4 {
+
+        .especialidad-servicio h4 {
             font-family: var(--font-sans);
             font-weight: 600;
             font-size: 1.1rem;
             margin-bottom: 4px;
+            color: var(--color-text);
         }
-        .servicio-item p {
+
+        .especialidad-servicio p {
             font-size: 0.95rem;
         }
 
@@ -1599,7 +1685,6 @@
 
         @media (max-width: 992px) {
             .hero .container,
-            .quienes-somos .container,
             .ubicacion-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1617,7 +1702,7 @@
             .galeria-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .servicios-grid {
+            .especialidad-servicios-grid {
                 grid-template-columns: 1fr;
             }
             .testimonios-grid {
@@ -1700,6 +1785,9 @@
             }
             .modal-content {
                 padding: 24px;
+            }
+            .especialidad-bloque {
+                padding: 30px 20px;
             }
         }
 
@@ -1798,11 +1886,11 @@
             </div>
             <div class="hero-image fade-in delay-2">
                 <div class="hero-img-wrapper">
-                    <img src="images/consulta.jpeg" alt="Consultorio Médico" />
+                    <img src="images/portal.jpg" alt="Consultorio Médico" />
                     <span class="badge"><i class="fas fa-shield-alt" style="margin-right:6px;"></i>Confianza</span>
                     <div class="overlay-text">
-                        <h3>Consultorio Dr. Sancho</h3>
-                        <p style="color:white; margin:0; font-size:1rem;">Dos médicos, una sola misión: tu salud</p>
+                       <!-- <h3>Portal del Consultorio Dr. Sancho</h3> -->
+                       <!--  <p style="color:white; margin:0; font-size:1rem;">Dos médicos, una sola misión: tu salud</p> -->
                     </div>
                 </div>
             </div>
@@ -1837,14 +1925,9 @@
         </div>
     </section>
 
-    <!-- ===== QUIENES SOMOS ===== -->
+    <!-- ===== QUIENES SOMOS (SIN IMAGEN) ===== -->
     <section class="quienes-somos" id="quienes-somos">
         <div class="container">
-            <div class="quienes-somos-image fade-in">
-                <div class="qs-img-wrapper">
-                    <img src="images/sancho.jpeg" alt="Dr. Sancho" />
-                </div>
-            </div>
             <div class="quienes-somos-content fade-in delay-1">
                 <span class="section-tag">Quiénes somos</span>
                 <h2>Dr. Sancho</h2>
@@ -1857,56 +1940,145 @@
                     el <strong>diagnóstico preciso</strong> y el <strong>seguimiento cercano</strong> sean los pilares de cada atención.
                 </p>
                 <p>
-                    <strong>Actualmente, contamos con dos médicos</strong> para atenderte mejor: el Dr. Andres Sancho y el Dr. David Sancho, ambos con amplia experiencia en medicina general y cuidados críticos.
+                    <strong>Actualmente, contamos con dos médicos</strong> para atenderte mejor: el Dr. Andrés Sancho y el Dr. David Sancho, ambos con amplia experiencia en medicina general y cuidados críticos.
                 </p>
                 <div class="firma">— Dr. Sancho</div>
                 <a href="#contacto" class="btn btn-primary" style="margin-top: 20px;">Agendar cita</a>
-                <button class="btn-escuchar" onclick="leerTexto('quienes')">
-                    <i class="fas fa-volume-up"></i> Escuchar sección
-                </button>
+                <div>
+                    <button class="btn-escuchar" onclick="leerTexto('quienes')">
+                        <i class="fas fa-volume-up"></i> Escuchar sección
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVICIOS ===== -->
+    <!-- ===== SERVICIOS / ESPECIALIDADES DIVIDIDAS ===== -->
     <section class="servicios" id="servicios">
         <div class="container">
             <div class="text-center fade-in">
                 <span class="section-tag">Qué ofrecemos</span>
                 <h2>Servicios médicos</h2>
-                <p style="margin: 0 auto;">Atención integral para cada etapa de la vida.</p>
+                <p style="margin: 0 auto;">Dos áreas de atención integral para cubrir todas tus necesidades de salud.</p>
             </div>
-            <div class="servicios-grid">
-                <div class="servicio-item fade-in delay-1">
-                    <span class="icon">🩺</span>
-                    <div>
-                        <h4>Medicina General</h4>
-                        <p>Consultas de atención primaria, diagnóstico y tratamiento de enfermedades comunes.</p>
+
+            <!-- ===== BLOQUE 1: MEDICINA GENERAL ===== -->
+            <div class="especialidad-bloque fade-in delay-1">
+                <div class="especialidad-header">
+                    <span class="especialidad-icono">🩺</span>
+                    <h3>Medicina General</h3>
+                    <div class="medico-responsable">
+                        <i class="fas fa-user-md"></i>
+                        Dr. David Sancho · Medicina General
+                    </div>
+                    <p>
+                        Atención primaria integral para toda la familia. Nos enfocamos en la prevención,
+                        el diagnóstico oportuno y el acompañamiento continuo de tu salud.
+                    </p>
+                </div>
+
+                <!-- Imagen del Dr. David Sancho -->
+                <div class="especialidad-imagen">
+                    <img src="images/drdavid.jpeg" alt="Dr. David Sancho - Medicina General" />
+                </div>
+
+                <div class="especialidad-servicios-grid">
+                    <div class="especialidad-servicio">
+                        <span class="icon">🩺</span>
+                        <div>
+                            <h4>Consulta médica general</h4>
+                            <p>Evaluación integral, diagnóstico y tratamiento de enfermedades comunes y agudas.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">❤️‍🩹</span>
+                        <div>
+                            <h4>Chequeos preventivos</h4>
+                            <p>Evaluaciones completas para detectar factores de riesgo y prevenir enfermedades.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">🧠</span>
+                        <div>
+                            <h4>Manejo de enfermedades crónicas</h4>
+                            <p>Seguimiento de hipertensión, diabetes, enfermedades cardiovasculares y más.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">💉</span>
+                        <div>
+                            <h4>Control y seguimiento</h4>
+                            <p>Monitoreo continuo de tratamientos y ajustes personalizados según evolución.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="servicio-item fade-in delay-2">
-                    <span class="icon">❤️‍🩹</span>
-                    <div>
-                        <h4>Chequeos preventivos</h4>
-                        <p>Evaluaciones completas para detectar factores de riesgo y prevenir enfermedades.</p>
-                    </div>
-                </div>
-                <div class="servicio-item fade-in delay-2">
-                    <span class="icon">🧠</span>
-                    <div>
-                        <h4>Manejo de enfermedades crónicas</h4>
-                        <p>Seguimiento de hipertensión, diabetes, enfermedades cardiovasculares y más.</p>
-                    </div>
-                </div>
-                <div class="servicio-item fade-in delay-3">
-                    <span class="icon">🫀</span>
-                    <div>
-                        <h4>Medicina Crítica</h4>
-                        <p>Valoración y manejo de condiciones de alta complejidad con enfoque integral.</p>
-                    </div>
+
+                <div style="text-align:center; margin-top:30px;">
+                    <a href="#contacto" class="btn btn-primary">
+                        <i class="fas fa-calendar-check" style="margin-right:8px;"></i> Agendar con Dr. David Sancho
+                    </a>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:20px;">
+
+            <!-- ===== BLOQUE 2: MEDICINA CRÍTICA ===== -->
+            <div class="especialidad-bloque critica fade-in delay-2">
+                <div class="especialidad-header">
+                    <span class="especialidad-icono">🫀</span>
+                    <h3>Medicina Crítica</h3>
+                    <div class="medico-responsable">
+                        <i class="fas fa-user-md"></i>
+                        Dr. Andrés Sancho · Medicina Crítica
+                    </div>
+                    <p>
+                        Valoración y manejo de condiciones de alta complejidad. Experiencia hospitalaria
+                        en cuidados intensivos aplicada a la atención ambulatoria especializada.
+                    </p>
+                </div>
+
+                <!-- Imagen del Dr. Andrés Sancho -->
+                <div class="especialidad-imagen">
+                    <img src="images/drandres.jpeg" alt="Dr. Andrés Sancho - Medicina Crítica" />
+                </div>
+
+                <div class="especialidad-servicios-grid">
+                    <div class="especialidad-servicio">
+                        <span class="icon">🫀</span>
+                        <div>
+                            <h4>Valoración de alta complejidad</h4>
+                            <p>Evaluación integral de pacientes con múltiples condiciones o enfermedades graves.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">🏥</span>
+                        <div>
+                            <h4>Seguimiento post-hospitalario</h4>
+                            <p>Acompañamiento cercano después de una hospitalización o cirugía mayor.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">📊</span>
+                        <div>
+                            <h4>Manejo de pacientes críticos ambulatorios</h4>
+                            <p>Control de patologías complejas que requieren monitoreo especializado continuo.</p>
+                        </div>
+                    </div>
+                    <div class="especialidad-servicio">
+                        <span class="icon">🩻</span>
+                        <div>
+                            <h4>Segunda opinión médica</h4>
+                            <p>Revisión de diagnósticos y tratamientos con enfoque en casos complejos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align:center; margin-top:30px;">
+                    <a href="#contacto" class="btn btn-primary">
+                        <i class="fas fa-calendar-check" style="margin-right:8px;"></i> Agendar con Dr. Andrés Sancho
+                    </a>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
                 <button class="btn-escuchar" onclick="leerTexto('servicios')">
                     <i class="fas fa-volume-up"></i> Escuchar sección
                 </button>
@@ -2024,12 +2196,12 @@
         </div>
     </section>
 
-    <!-- ===== CTA + FORMULARIO CON MÚLTIPLES MÉDICOS ===== -->
+    <!-- ===== CTA + FORMULARIO ===== -->
     <section class="cta-final" id="contacto">
         <div class="container fade-in">
             <span class="section-tag">Tu salud nos importa</span>
             <h2>Agenda tu cita</h2>
-            <p>Selecciona el médico, fecha y hora que mejor te convenga. Verificamos disponibilidad en tiempo real.</p>
+            <p>Selecciona la especialidad, fecha y hora que mejor te convenga. Verificamos disponibilidad en tiempo real.</p>
 
             <form class="cita-form" id="citaForm">
                 <div class="grid-2">
@@ -2048,13 +2220,13 @@
                     <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" />
                 </div>
 
-                <!-- ===== SELECCIÓN DE MÉDICO ===== -->
+                <!-- ===== SELECCIÓN DE ESPECIALIDAD ===== -->
                 <div class="form-group">
-                    <label for="medico"><i class="fas fa-user-md"></i> Selecciona el médico *</label>
+                    <label for="medico"><i class="fas fa-user-md"></i> Selecciona la especialidad *</label>
                     <select id="medico" name="medico" required>
-                        <option value="">Selecciona un médico</option>
-                        <option value="Dr. Andres Sancho">Dr. Andres Sancho - Medicina Crítica</option>
-                        <option value="Dr. David Sancho">Dr. David Sancho - Medicina General</option>
+                        <option value="">Selecciona una especialidad</option>
+                        <option value="Dr. David Sancho">🩺 Medicina General — Dr. David Sancho</option>
+                        <option value="Dr. Andres Sancho">🫀 Medicina Crítica — Dr. Andrés Sancho</option>
                     </select>
                 </div>
 
@@ -2195,7 +2367,7 @@
                                 <th>Nombre</th>
                                 <th>Teléfono</th>
                                 <th>Email</th>
-                                <th>Médico</th>
+                                <th>Especialidad</th>
                                 <th>Fecha cita</th>
                                 <th>Motivo</th>
                                 <th>Estado</th>
@@ -2210,13 +2382,13 @@
 
                 <!-- ===== SECCIÓN DE AGENDA POR MÉDICO ===== -->
                 <div class="agenda-section">
-                    <h3><i class="fas fa-calendar-alt" style="color: var(--color-accent);"></i> Agenda por Médico</h3>
+                    <h3><i class="fas fa-calendar-alt" style="color: var(--color-accent);"></i> Agenda por Especialidad</h3>
                     <div class="agenda-filtros">
                         <div class="form-group">
-                            <label>Médico</label>
+                            <label>Especialidad</label>
                             <select id="agendaMedico">
-                                <option value="Dr. Sancho">Dr. Sancho</option>
-                                <option value="Dra. Pérez">Dra. Pérez</option>
+                                <option value="Dr. David Sancho">🩺 Medicina General — Dr. David Sancho</option>
+                                <option value="Dr. Andres Sancho">🫀 Medicina Crítica — Dr. Andrés Sancho</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -2239,7 +2411,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="agendaTableBody">
-                                    <tr><td colspan="5" class="empty">Selecciona un médico y fecha para ver la agenda</td></tr>
+                                    <tr><td colspan="5" class="empty">Selecciona una especialidad y fecha para ver la agenda</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -2268,10 +2440,10 @@
                     <input type="email" id="editEmail" />
                 </div>
                 <div class="form-group">
-                    <label>Médico</label>
+                    <label>Especialidad</label>
                     <select id="editMedico">
-                        <option value="Dr. Sancho">Dr. Sancho</option>
-                        <option value="Dra. Pérez">Dra. Pérez</option>
+                        <option value="Dr. David Sancho">🩺 Medicina General — Dr. David Sancho</option>
+                        <option value="Dr. Andres Sancho">🫀 Medicina Crítica — Dr. Andrés Sancho</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -2378,13 +2550,13 @@
 
     <script>
         // ===== CONFIGURACIÓN =====
-        const ADMIN_PASSWORD = 'admin123'; // 🔑 Cambia esta contraseña
+        const ADMIN_PASSWORD = 'admin123';
         const SHEETDB_URL = 'https://sheetdb.io/api/v1/ll1mwpwdjusl0';
         const WHATSAPP_NUMBER = '593987487879';
 
         let citasData = [];
 
-        // ===== ACCESIBILIDAD: FUNCIONES =====
+        // ===== ACCESIBILIDAD =====
         function toggleContraste() {
             document.body.classList.toggle('contraste-alto');
         }
@@ -2395,11 +2567,9 @@
 
         function toggleDaltonismo(tipo) {
             const body = document.body;
-            // Limpiar anteriores
             body.classList.remove('daltonismo-protanopia');
             body.classList.remove('daltonismo-deuteranopia');
             body.classList.remove('daltonismo-tritanopia');
-            // Aplicar nueva
             body.classList.add(`daltonismo-${tipo}`);
         }
 
@@ -2413,12 +2583,11 @@
             document.body.classList.remove('font-xl');
         }
 
-        // ===== ACCESIBILIDAD: LECTURA DE TEXTO (TEXTO A VOZ) =====
         function leerTexto(seccion) {
             const textos = {
                 'hero': 'Bienvenidos al Consultorio Médico Dr. Sancho. Ofrecemos cuidado integral para toda tu familia. Contamos con dos médicos especialistas para brindarte la mejor atención.',
                 'quienes': 'Somos el consultorio del Dr. Sancho. Médico especialista en medicina crítica y cuidados intensivos. Actualmente contamos con dos médicos: el Dr. Andrés Sancho y el Dr. David Sancho.',
-                'servicios': 'Ofrecemos medicina general, chequeos preventivos, manejo de enfermedades crónicas y medicina crítica.',
+                'servicios': 'Ofrecemos dos especialidades: Medicina General con el Dr. David Sancho, que incluye consulta general, chequeos preventivos, manejo de enfermedades crónicas y control de seguimiento. Y Medicina Crítica con el Dr. Andrés Sancho, que incluye valoración de alta complejidad, seguimiento post-hospitalario, manejo de pacientes críticos ambulatorios y segunda opinión médica.',
                 'ubicacion': 'Estamos ubicados en Río Paute y Los Atis, Ambato, Ecuador. Nuestro horario es de lunes a viernes de 8 de la mañana a 7 de la noche, y sábados de 9 a 1.',
                 'testimonios': 'Nuestros pacientes confían en nosotros. Valoramos la salud de cada persona y trabajamos para brindar la mejor atención.',
             };
@@ -2427,23 +2596,22 @@
             if (!texto) return;
 
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Detener lectura anterior
+                window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(texto);
-                utterance.lang = 'es-ES'; // Español
-                utterance.rate = 1; // Velocidad normal
+                utterance.lang = 'es-ES';
+                utterance.rate = 1;
                 window.speechSynthesis.speak(utterance);
             } else {
                 alert('Tu navegador no soporta lectura de voz. Usa Chrome o Edge para escuchar.');
             }
         }
 
-        // ===== FECHA MÍNIMA EN EL FORMULARIO =====
+        // ===== FECHA MÍNIMA =====
         document.addEventListener('DOMContentLoaded', function() {
             const fechaInput = document.getElementById('fechaCita');
             const hoy = new Date().toISOString().split('T')[0];
             fechaInput.setAttribute('min', hoy);
 
-            // Validación de fecha
             fechaInput.addEventListener('change', function() {
                 const fechaSeleccionada = this.value;
                 const fechaError = document.getElementById('fechaError');
@@ -2453,17 +2621,15 @@
                 } else {
                     fechaError.style.display = 'none';
                     this.style.borderColor = '#e2e8f0';
-                    // Verificar disponibilidad al cambiar fecha
                     verificarDisponibilidad();
                 }
             });
 
-            // Verificar disponibilidad al cambiar médico o hora
             document.getElementById('medico').addEventListener('change', verificarDisponibilidad);
             document.getElementById('horaCita').addEventListener('change', verificarDisponibilidad);
         });
 
-        // ===== VERIFICAR DISPONIBILIDAD EN TIEMPO REAL =====
+        // ===== VERIFICAR DISPONIBILIDAD =====
         function verificarDisponibilidad() {
             const medico = document.getElementById('medico').value;
             const fecha = document.getElementById('fechaCita').value;
@@ -2476,17 +2642,16 @@
                 return;
             }
 
-            // Buscar si hay alguna cita con el mismo médico, fecha y hora
             const ocupado = citasData.some(cita => 
                 cita.medico === medico && 
                 cita.fecha_cita === fecha && 
                 cita.hora_cita === hora &&
-                cita.estado !== 'Atendido' // Las atendidas no cuentan
+                cita.estado !== 'Atendido'
             );
 
             if (ocupado) {
                 ocupadoMsg.style.display = 'block';
-                ocupadoTexto.textContent = `⚠️ El Dr. ${medico} ya tiene una cita en este horario. Por favor, selecciona otro horario.`;
+                ocupadoTexto.textContent = `⚠️ Esta especialidad ya tiene una cita agendada en este horario. Por favor, selecciona otra hora.`;
                 document.getElementById('horaCita').style.borderColor = '#ef4444';
             } else {
                 ocupadoMsg.style.display = 'none';
@@ -2494,7 +2659,7 @@
             }
         }
 
-        // ===== FORMULARIO: Enviar a WhatsApp y almacenar en Sheets =====
+        // ===== FORMULARIO =====
         document.getElementById('citaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -2507,30 +2672,25 @@
             const motivo = document.getElementById('motivo').value;
             const mensaje = document.getElementById('mensaje').value.trim();
 
-            // Validaciones
             if (!nombre || !telefono) {
                 alert('Por favor, completa al menos tu nombre y teléfono.');
                 return;
             }
-
             if (!medico) {
-                alert('Por favor, selecciona un médico.');
+                alert('Por favor, selecciona una especialidad.');
                 return;
             }
-
             if (!fechaCita || !horaCita) {
                 alert('Por favor, selecciona la fecha y hora de tu cita.');
                 return;
             }
 
-            // Validar que la fecha no sea pasada
             const hoy = new Date().toISOString().split('T')[0];
             if (fechaCita < hoy) {
-                alert('La fecha de la cita no puede ser en el pasado. Por favor, selecciona una fecha futura.');
+                alert('La fecha de la cita no puede ser en el pasado.');
                 return;
             }
 
-            // Verificar disponibilidad antes de enviar
             const ocupado = citasData.some(cita => 
                 cita.medico === medico && 
                 cita.fecha_cita === fechaCita && 
@@ -2543,7 +2703,6 @@
                 return;
             }
 
-            // Formatear fecha y hora para la cita
             const fechaFormateada = new Date(fechaCita + 'T' + horaCita);
             const fechaLegible = fechaFormateada.toLocaleString('es-EC', {
                 weekday: 'long',
@@ -2556,11 +2715,9 @@
 
             const fechaRegistro = new Date().toLocaleString();
 
-            // 1. Enviar a WhatsApp
-            const whatsappMsg = `Hola Dr. Sancho, me gustaría agendar una cita.%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Email:* ${email || 'No especificado'}%0A*Médico:* ${medico}%0A*Fecha y hora:* ${fechaLegible}%0A*Motivo:* ${motivo || 'No especificado'}%0A*Mensaje:* ${mensaje || 'Sin mensaje adicional'}`;
+            const whatsappMsg = `Hola Dr. Sancho, me gustaría agendar una cita.%0A%0A*Nombre:* ${nombre}%0A*Teléfono:* ${telefono}%0A*Email:* ${email || 'No especificado'}%0A*Especialidad:* ${medico}%0A*Fecha y hora:* ${fechaLegible}%0A*Motivo:* ${motivo || 'No especificado'}%0A*Mensaje:* ${mensaje || 'Sin mensaje adicional'}`;
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`, '_blank');
 
-            // 2. Guardar en SheetDB
             try {
                 const response = await fetch(SHEETDB_URL, {
                     method: 'POST',
@@ -2587,12 +2744,11 @@
                 console.warn('⚠️ Error al guardar:', error);
             }
 
-            alert(`✅ ¡Cita agendada con ${medico} para ${fechaLegible}! Te contactaremos pronto.`);
+            alert(`✅ ¡Cita agendada para ${medico} el ${fechaLegible}! Te contactaremos pronto.`);
             this.reset();
             document.getElementById('fechaCita').setAttribute('min', new Date().toISOString().split('T')[0]);
             document.getElementById('ocupadoMsg').style.display = 'none';
 
-            // Recargar citas para actualizar disponibilidad
             loadCitas();
         });
 
@@ -2633,7 +2789,7 @@
             if (e.target === adminPanel) closeAdmin();
         });
 
-        // ===== CARGAR CITAS DESDE SHEETDB =====
+        // ===== CARGAR CITAS =====
         async function loadCitas() {
             const tbody = document.getElementById('adminTableBody');
             tbody.innerHTML = '<tr><td colspan="9" class="empty">Cargando citas...</td></tr>';
@@ -2652,7 +2808,7 @@
                 citasData = data.map((cita, index) => ({
                     ...cita,
                     estado: cita.estado || 'Pendiente',
-                    medico: cita.medico || 'Dr. Sancho',
+                    medico: cita.medico || 'Dr. David Sancho',
                     _index: index
                 }));
 
@@ -2671,7 +2827,6 @@
             }
         }
 
-        // ===== RENDERIZAR TABLA =====
         function renderTable(data) {
             const tbody = document.getElementById('adminTableBody');
 
@@ -2686,7 +2841,7 @@
                     <td><strong>${cita.nombre || ''}</strong></td>
                     <td>${cita.telefono || ''}</td>
                     <td>${cita.email || '-'}</td>
-                    <td><span class="medico-badge">${cita.medico || 'Dr. Sancho'}</span></td>
+                    <td><span class="medico-badge">${cita.medico || 'Dr. David Sancho'}</span></td>
                     <td>${cita.fecha_cita_completa || cita.fecha_cita || cita.fecha_registro || '-'}</td>
                     <td>${cita.motivo || '-'}</td>
                     <td>
@@ -2714,7 +2869,6 @@
             `).join('');
         }
 
-        // ===== ACTUALIZAR ESTADÍSTICAS =====
         function updateStats(data) {
             const total = data.length;
             const hoy = new Date().toISOString().split('T')[0];
@@ -2731,7 +2885,6 @@
             document.getElementById('ultimaCita').textContent = ultima;
         }
 
-        // ===== FILTRAR CITAS =====
         function filterCitas() {
             const search = document.getElementById('searchInput').value.toLowerCase().trim();
             if (!search) {
@@ -2746,19 +2899,17 @@
             renderTable(filtered);
         }
 
-        // ===== ENVIAR RECORDATORIO POR WHATSAPP =====
         function enviarRecordatorio(index) {
             const cita = citasData.find(c => c._index === index);
             if (!cita) return;
 
             const fechaCita = cita.fecha_cita_completa || cita.fecha_cita || 'próximamente';
-            const mensaje = `Hola ${cita.nombre}, soy el Dr. Sancho. Te recordamos que tienes una cita agendada con ${cita.medico || 'nuestro equipo'} para ${cita.motivo || 'consulta médica'} el día ${fechaCita}. ¡Te esperamos! Si necesitas reprogramar, contáctanos.`;
+            const mensaje = `Hola ${cita.nombre}, soy el Dr. Sancho. Te recordamos que tienes una cita agendada para ${cita.medico || 'consulta médica'} el día ${fechaCita}. ¡Te esperamos! Si necesitas reprogramar, contáctanos.`;
 
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
 
-        // ===== MARCAR COMO ATENDIDO =====
         async function marcarAtendido(index) {
             if (!confirm('¿Marcar esta cita como atendida?')) return;
 
@@ -2788,7 +2939,6 @@
             }
         }
 
-        // ===== ELIMINAR CITA =====
         async function eliminarCita(index) {
             if (!confirm('¿Estás seguro de eliminar esta cita? Esta acción no se puede deshacer.')) return;
 
@@ -2811,7 +2961,6 @@
             }
         }
 
-        // ===== ABRIR MODAL DE EDICIÓN =====
         function openEditModal(index) {
             const cita = citasData.find(c => c._index === index);
             if (!cita) return;
@@ -2820,7 +2969,7 @@
             document.getElementById('editNombre').value = cita.nombre || '';
             document.getElementById('editTelefono').value = cita.telefono || '';
             document.getElementById('editEmail').value = cita.email || '';
-            document.getElementById('editMedico').value = cita.medico || 'Dr. Sancho';
+            document.getElementById('editMedico').value = cita.medico || 'Dr. David Sancho';
             document.getElementById('editFechaCita').value = cita.fecha_cita || '';
             document.getElementById('editHoraCita').value = cita.hora_cita || '08:00';
             document.getElementById('editMotivo').value = cita.motivo || 'Medicina General';
@@ -2830,12 +2979,10 @@
             document.getElementById('editModal').classList.add('active');
         }
 
-        // ===== CERRAR MODAL =====
         function closeModal() {
             document.getElementById('editModal').classList.remove('active');
         }
 
-        // ===== GUARDAR EDICIÓN =====
         async function saveEdit() {
             const index = parseInt(document.getElementById('editRowIndex').value);
             const cita = citasData.find(c => c._index === index);
@@ -2893,14 +3040,13 @@
             }
         }
 
-        // ===== EXPORTAR A CSV =====
         function exportCSV() {
             if (!citasData || citasData.length === 0) {
                 alert('No hay datos para exportar');
                 return;
             }
 
-            const headers = ['Nombre', 'Teléfono', 'Email', 'Médico', 'Fecha Cita', 'Hora', 'Motivo', 'Estado', 'Mensaje', 'Fecha Registro'];
+            const headers = ['Nombre', 'Teléfono', 'Email', 'Especialidad', 'Fecha Cita', 'Hora', 'Motivo', 'Estado', 'Mensaje', 'Fecha Registro'];
             const rows = citasData.map(c => [
                 c.nombre || '',
                 c.telefono || '',
@@ -2927,7 +3073,6 @@
             URL.revokeObjectURL(link.href);
         }
 
-        // ===== VER AGENDA POR MÉDICO =====
         function verAgenda() {
             const medico = document.getElementById('agendaMedico').value;
             const fecha = document.getElementById('agendaFecha').value;
@@ -2940,19 +3085,17 @@
             const tbody = document.getElementById('agendaTableBody');
             const resultados = document.getElementById('agendaResultados');
 
-            // Filtrar citas del médico en esa fecha
             const citasMedico = citasData.filter(c => 
                 c.medico === medico && 
                 c.fecha_cita === fecha
             );
 
-            // Ordenar por hora
             citasMedico.sort((a, b) => {
                 return (a.hora_cita || '00:00').localeCompare(b.hora_cita || '00:00');
             });
 
             if (citasMedico.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="empty">No hay citas para ${medico} en esta fecha</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="empty">No hay citas para esta especialidad en esta fecha</td></tr>`;
                 resultados.classList.add('active');
                 return;
             }
@@ -2991,11 +3134,11 @@
 
         function getBotResponse(msg) {
             const m = msg.toLowerCase().trim();
-            if (m.includes('hola') || m.includes('buenos')) return '¡Hola! ¿Cómo estás? Puedo ayudarte a agendar una cita, resolver dudas sobre nuestros servicios o darte información del consultorio. Contamos con dos médicos: Dr. Andres Sancho y Dr. David Sancho.';
-            if (m.includes('cita') || m.includes('agendar') || m.includes('turno')) return 'Para agendar una cita, puedes usar el formulario de la página o escribirnos directamente por WhatsApp al +593 98 7487 879. Puedes elegir entre el Dr. Andres Sancho y el Dr. David Sancho.';
-            if (m.includes('medico') || m.includes('doctor')) return 'Contamos con dos médicos: el Dr. Andres Sancho (especialista en medicina crítica) y el Dr. David Sancho (especialista en medicina general). Ambos tienen amplia experiencia. ¿Te gustaría agendar con alguno en particular?';
+            if (m.includes('hola') || m.includes('buenos')) return '¡Hola! ¿Cómo estás? Puedo ayudarte a agendar una cita, resolver dudas sobre nuestros servicios o darte información del consultorio.';
+            if (m.includes('cita') || m.includes('agendar') || m.includes('turno')) return 'Para agendar una cita, puedes usar el formulario de la página o escribirnos directamente por WhatsApp al +593 98 7487 879. Puedes elegir entre 🩺 Medicina General y 🫀 Medicina Crítica.';
+            if (m.includes('medico') || m.includes('doctor') || m.includes('especialidad')) return 'Contamos con dos especialidades: 🩺 Medicina General con el Dr. David Sancho, y 🫀 Medicina Crítica con el Dr. Andrés Sancho. ¿Con cuál te gustaría agendar?';
             if (m.includes('precio') || m.includes('costo')) return 'El costo de la consulta general es de $50. Los chequeos preventivos tienen un valor de $80. Para casos de medicina crítica, el costo varía según la complejidad. ¿Te gustaría agendar una cita?';
-            if (m.includes('horario') || m.includes('abren')) return 'Nuestro horario de atención es de lunes a viernes de 8:00 a 19:00, y sábados de 9:00 a 13:00. Ambos médicos atienden en estos horarios.';
+            if (m.includes('horario') || m.includes('abren')) return 'Nuestro horario de atención es de lunes a viernes de 8:00 a 19:00, y sábados de 9:00 a 13:00.';
             if (m.includes('ubicación') || m.includes('dirección') || m.includes('donde')) return 'Estamos en Río Paute y Los Atis, Ambato, Ecuador. Puedes ver el mapa en la sección "Ubicación" de esta página o hacer clic en "Cómo llegar" para abrir Google Maps.';
             if (m.includes('gracias') || m.includes('ok')) return '¡De nada! Estamos para servirte. Si necesitas algo más, aquí estoy. ¡Que tengas un excelente día! 😊';
             return 'Gracias por tu mensaje. Para consultas específicas, te recomiendo usar el formulario de cita o escribirnos por WhatsApp al +593 98 7487 879. ¿Hay algo más en lo que pueda ayudarte?';
@@ -3027,17 +3170,10 @@
             }
         });
 
-        console.log('🩺 Consultorio Dr. Sancho - Panel de administración avanzado');
-        console.log('🔑 Contraseña por defecto: admin123');
-        console.log('📊 Funcionalidades:');
-        console.log('  ✅ Múltiples médicos (Dr. Andres Sancho y Dr. David Sancho)');
-        console.log('  ✅ Verificación de disponibilidad en tiempo real');
-        console.log('  ✅ Agenda por médico');
-        console.log('  ✅ Enviar recordatorios por WhatsApp');
-        console.log('  ✅ Editar y eliminar citas');
-        console.log('  ✅ Exportar a CSV');
-        console.log('♿ Accesibilidad: Alto contraste, Modo oscuro, Daltonismo, Tamaño de letra');
-        console.log('🔊 Texto a voz: Lee secciones de la página');
+        console.log('🩺 Consultorio Dr. Sancho - Versión final');
+        console.log('  ✅ Quiénes somos sin imagen');
+        console.log('  🩺 Medicina General → Dr. David Sancho');
+        console.log('  🫀 Medicina Crítica → Dr. Andrés Sancho');
     </script>
 </body>
 </html>
